@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Архив статей</title>
+</head>
+<link rel="stylesheet" href="/static/index.css">
+<body>
+    <div class="header">
+        <a href="http://127.0.0.1:8000">
+            <img src="/static/img/logo.png"/>
+        </a>
+    </div>
+    <div class="archive">
+        {% for post in posts %}
+            <a href="{% url 'get_article' post.id %}">
+                <div class="one-post">
+                    <h2 class="post-title">{{ post.title }}</h2>
+                    <div class="article-info">
+                        <div class="article-author">{{ post.author.username }}</div>
+                        <div class="article-created-date">{{ post.created_date }}</div>
+                    </div>
+                    <p class="article-text">{{ post.get_excerpt }}</p>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+    <div class="create-article-button-wrapper">
+        <a href="http://127.0.0.1:8000/article/new" class="create-article-button">
+            Написать новую статью
+        </a>
+    </div>
+</body>
+</html>
+
