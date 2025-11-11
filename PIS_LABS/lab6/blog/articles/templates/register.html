@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="/static/index.css">
+</head>
+<body>
+    <div class="header">
+        <a href="http://127.0.0.1:8000">
+            <img src="/static/img/logo.png"/>
+        </a>
+    </div>
+    <div class="create_article">
+        <h1>Регистрация</h1>
+        {% if errors %}
+            <div class="errorlist">{{ errors }}</div>
+        {% endif %}
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <input type="text" name="username" placeholder="Имя пользователя" class="post-name">
+            </div>
+            <div class="form-group">
+                <input type="email" name="email" placeholder="Email" class="post-name">
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" placeholder="Пароль" class="post-name">
+            </div>
+            <div class="form-group">
+                <input type="password" name="password2" placeholder="Повторите пароль" class="post-name">
+            </div>
+            <input type="submit" value="Зарегистрироваться">
+        </form>
+    </div>
+</body>
+</html>
